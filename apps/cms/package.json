@@ -8,7 +8,8 @@
     "deploy": "strapi deploy",
     "dev": "strapi develop",
     "start": "strapi start",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "clean": "git clean -xdf .turbo .cache node_modules .strapi .tmp dist .strapi-updater.json"
   },
   "dependencies": {
     "@strapi/plugin-cloud": "5.10.2",
