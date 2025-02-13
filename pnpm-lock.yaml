@@ -18,7 +18,7 @@ importers:
         specifier: 5.7.3
         version: 5.7.3
 
-  apps/backend:
+  apps/cms:
     dependencies:
       '@strapi/plugin-cloud':
         specifier: 5.10.2
@@ -10653,7 +10653,7 @@ snapshots:
     dependencies:
       '@hapi/bourne': 3.0.0
       inflation: 2.1.0
-      qs: 6.11.1
+      qs: 6.14.0
       raw-body: 2.5.2
       type-is: 1.6.18
 
@@ -11649,7 +11649,7 @@ snapshots:
       dezalgo: 1.0.4
       hexoid: 1.0.0
       once: 1.4.0
-      qs: 6.11.1
+      qs: 6.14.0
 
   formik@2.4.5(react@18.3.1):
     dependencies:
@@ -14165,7 +14165,7 @@ snapshots:
       htmlparser2: 8.0.2
       is-plain-object: 5.0.0
       parse-srcset: 1.0.2
-      postcss: 8.4.31
+      postcss: 8.5.2
 
   scheduler@0.23.0:
     dependencies:
