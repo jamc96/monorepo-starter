@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "clean": "git clean -xdf .next node_modules next-env.d.*"
+    "clean": "git clean -xdf .turbo .next node_modules next-env.d.*"
   },
   "dependencies": {
     "react": "^19.0.0",
