@@ -1,9 +1,9 @@
 {
-  "name": "website-boilerplate",
+  "name": "monorepo-starter",
   "private": true,
   "scripts": {
     "build": "turbo build",
-    "dev": "turbo dev",
+    "dev": "turbo dev sync",
     "lint": "turbo lint",
     "clean": "turbo clean && git clean -xdf .turbo node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
@@ -11,7 +11,8 @@
   "devDependencies": {
     "prettier": "^3.5.0",
     "turbo": "^2.4.2",
-    "typescript": "5.7.3"
+    "typescript": "5.7.3",
+    "chokidar-cli": "^3.0.0"
   },
   "packageManager": "pnpm@9.0.0",
   "engines": {

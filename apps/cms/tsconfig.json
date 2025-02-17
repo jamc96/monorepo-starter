@@ -1,5 +1,5 @@
 {
-  "extends": "@repo/typescript-config/strapi.json",
+  "extends": "@monorepo-starter/typescript-config/strapi.json",
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "."
