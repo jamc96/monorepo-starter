@@ -1,5 +1,5 @@
 {
-  "name": "@monorepo-starter/types",
+  "name": "@monorepo/types",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",

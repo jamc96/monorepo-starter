@@ -18,8 +18,8 @@ This Turborepo includes the following packages/apps:
 
 - `docs`: a [Next.js](https://nextjs.org/) app
 - `web`: another [Next.js](https://nextjs.org/) app
-- `@monorepo-starter/typescript-config`: `tsconfig.json`s used throughout the monorepo
-- `@monorepo-starter/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- `@monorepo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- `@monorepo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
@@ -81,3 +81,7 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
 - [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
 - [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+
+## Deployment
+
+Vercel is currently having troubles with using a custom packageManager for monorepos, the solution is https://vercel.com/changelog/corepack-experimental-is-now-available.
