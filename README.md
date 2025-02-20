@@ -1,87 +1,154 @@
-# Turborepo starter
+# Monorepo Starter
 
-This Turborepo starter is maintained by the Turborepo core team.
+This is a **Turbo-powered monorepo** managed with **pnpm**. It contains multiple applications and shared packages to streamline development across projects.
 
-## Using this example
+## 📁 Structure
 
-Run the following command:
+```
+monorepo-starter/
+│── apps/
+│   ├── web/       # Next.js application
+│   ├── cms/       # Strapi CMS
+│
+│── packages/
+│   ├── typescript-config/  # Shared TypeScript configurations
+│   ├── types/              # Shared TypeScript types
+│
+│── package.json      # Root package configuration
+│── turbo.json        # Turbo build configurations
+│── pnpm-workspace.yaml  # pnpm workspace settings
+```
+
+## 🚀 Getting Started
+
+### 1️⃣ Install Dependencies
+
+Make sure you have **Node.js >=18** and **pnpm 9** installed.
 
 ```sh
-npx create-turbo@latest
+pnpm install
 ```
 
-## What's inside?
+### 2️⃣ Run Development Mode
 
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@monorepo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-- `@monorepo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
+```sh
 pnpm dev
 ```
 
-### Remote Caching
+This runs the applications in development mode using **Turbo**.
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+### 3️⃣ Build Applications
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
+```sh
+pnpm build
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+This runs `turbo build`, compiling all apps and packages.
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+### 4️⃣ Lint Code
 
+```sh
+pnpm lint
 ```
-npx turbo link
+
+### 5️⃣ Clean Workspace
+
+```sh
+pnpm clean
 ```
 
-## Useful Links
+## 📦 Applications & Packages
 
-Learn more about the power of Turborepo:
+### 🖥️ Web Application (@monorepo/web)
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+- **Framework**: Next.js (React 19)
+- **Commands**:
+  ```sh
+  pnpm --filter @monorepo/web dev   # Run Next.js in dev mode
+  pnpm --filter @monorepo/web build # Build Next.js project
+  ```
 
-## Deployment
+### 📊 CMS (@monorepo/cms)
 
-Vercel is currently having troubles with using a custom packageManager for monorepos, the solution is https://vercel.com/changelog/corepack-experimental-is-now-available.
+- **Framework**: Strapi 5
+- **Commands**:
+  ```sh
+  pnpm --filter @monorepo/cms dev   # Run Strapi in dev mode
+  pnpm --filter @monorepo/cms build # Build Strapi project
+  ```
+
+### 📜 Shared TypeScript Config (@monorepo/typescript-config)
+
+- Stores TypeScript configurations for all projects.
+
+### 🔗 Shared Types (@monorepo/types)
+
+- Syncs TypeScript types between **CMS** and **Web**.
+- **Command**:
+  ```sh
+  pnpm --filter @monorepo/types sync # Sync types from CMS
+  ```
+
+## ⚡ Turbo Configuration
+
+This monorepo uses **Turbo** for task caching and parallel execution.
+
+- **turbo.json** defines how build, dev, lint, and other tasks run efficiently.
+
+## 🚀 Deployment
+
+### 📤 Deploy Web (Next.js) on Vercel
+
+1. Install Vercel CLI:
+   ```sh
+   pnpm add -g vercel
+   ```
+2. Authenticate with Vercel:
+   ```sh
+   vercel login
+   ```
+3. Deploy:
+   ```sh
+   vercel --prod
+   ```
+4. **Fixing Corepack Issue:** If you encounter a deployment issue related to Corepack, enable it by adding the following environment variable in your Vercel project settings:
+   - **Key**: `ENABLE_EXPERIMENTAL_COREPACK`
+   - **Value**: `1`
+   
+   Also, ensure `packageManager` is set in `package.json`:
+   ```json
+   {
+     "packageManager": "pnpm@9"
+   }
+   ```
+
+   **Common Issue:** Some users report an error when deploying to Vercel:
+   ```
+   ERR_PNPM_META_FETCH_FAIL  GET https://registry.npmjs.org/pnpm: Value of "this" must be of type URLSearchParams
+   ```
+   To resolve this, ensure Corepack is enabled as described above.
+
+### 🌍 Deploy CMS (Strapi) on Render Cloud
+
+1. Build the Strapi project:
+   ```sh
+   pnpm --filter @monorepo/cms build
+   ```
+2. Deploy to **Render Cloud** by creating a new **Web Service** and linking your repository.
+3. Set the required environment variables in Render for production.
+4. Start the service and verify deployment.
+
+## 📜 Individual READMEs
+
+To maintain clarity, each application and shared library has its own README:
+- `apps/web/README.md` → Details specific to the Next.js web application.
+- `apps/cms/README.md` → Documentation for the Strapi CMS setup and usage.
+- `packages/typescript-config/README.md` → Explanation of TypeScript configurations.
+- `packages/types/README.md` → Documentation on shared types and how to use them.
+
+Each README contains setup instructions, dependencies, commands, and deployment guidelines.
+
+## 📜 License
+
+This project is licensed under the **MIT License**.
+
